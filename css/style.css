@@ -687,3 +687,77 @@ html {
 .hero-links {
     margin-top: 15px;
 }
+
+/* Accessibility Improvements */
+/* Focus states for keyboard navigation */
+a:focus,
+button:focus,
+.nav-item:focus,
+.cta-button:focus,
+.mobile-menu-toggle:focus {
+    outline: 2px solid #ff6b35;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #ff6b35;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Ensure sufficient color contrast */
+.hero-description,
+.about-text,
+.portfolio-description,
+.timeline-description {
+    color: #bbb; /* Improved contrast from #aaa */
+}
+
+.contact-label {
+    color: #bbb; /* Improved contrast from #aaa */
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-image {
+        transform: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-description,
+    .about-text,
+    .portfolio-description,
+    .timeline-description {
+        color: #fff;
+    }
+    
+    .nav-item {
+        color: #ccc;
+    }
+    
+    .contact-label {
+        color: #ccc;
+    }
+}
