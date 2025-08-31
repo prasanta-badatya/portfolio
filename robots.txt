@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://prasantabadatya.github.io/portfolio/sitemap.xml
+
+# Allow crawling of all important content
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /assets/
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
+
+# Disallow crawling of unnecessary files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.*
+
+# Additional directives for better SEO
+# Allow Google to crawl CSS and JS files for better page understanding
+User-agent: Googlebot
+Allow: /css/
+Allow: /js/

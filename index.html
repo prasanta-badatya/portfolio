@@ -4,41 +4,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prasanta Badatya - Backend Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Prasanta Badatya - Backend Developer | Django Python Expert</title>
+    <meta name="description" content="Prasanta Badatya - Backend Developer specializing in Django, Python, REST APIs. 2+ years experience building scalable web applications.">
+    <meta name="keywords" content="Prasanta Badatya, Backend Developer, Django Developer, Python Developer, Mumbai, REST API, Full Stack Developer, Software Engineer">
+    <meta name="author" content="Prasanta Badatya">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="IN-MH">
+    <meta name="geo.placename" content="Mumbai">
+    <meta name="geo.position" content="19.0760;72.8777">
+    <meta name="ICBM" content="19.0760, 72.8777">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Prasanta Badatya - Backend Developer | Django Python Expert">
+    <meta property="og:description" content="Prasanta Badatya - Backend Developer specializing in Django, Python, REST APIs. 2+ years experience building scalable web applications.">
+    <meta property="og:image" content="https://github.com/prasanta-badatya/portfolio/blob/main/images/my_portfolio_image.png">
+    <meta property="og:url" content="https://github.com/prasanta-badatya/portfolio/">
+    <meta property="og:site_name" content="Prasanta Badatya Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prasanta Badatya - Backend Developer | Django Python Expert">
+    <meta name="twitter:description" content="Backend Developer specializing in Django, Python, REST APIs. 2+ years experience building scalable web applications.">
+    <meta name="twitter:image" content="https://github.com/prasanta-badatya/portfolio/blob/main/images/my_portfolio_image.png">
+    <meta name="twitter:creator" content="@prasantabadatya">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://github.com/prasanta-badatya/portfolio/">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="images/my_portfolio_image.png" as="image">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
     <!-- Header Navigation -->
-    <header class="header">
+    <header class="header" role="banner">
         <div class="nav-container">
-            <a href="#home" class="logo">PB</a>
-            <nav class="nav-menu">
-                <a href="#home" class="nav-item active">Home</a>
+            <a href="#home" class="logo" aria-label="Prasanta Badatya Portfolio Home">PB</a>
+            <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                <a href="#home" class="nav-item active" aria-current="page">Home</a>
                 <a href="#about" class="nav-item">About</a>
                 <a href="#portfolio" class="nav-item">Portfolio</a>
                 <a href="#experience" class="nav-item">Experience</a>
                 <a href="#contact" class="nav-item">Contact</a>
             </nav>
-            <div class="mobile-menu-toggle">
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
-            </div>
+            </button>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main id="main" class="main-content" role="main">
         <!-- Home Section -->
-        <section id="home" class="section">
+        <section id="home" class="section" aria-labelledby="hero-heading">
             <div class="container">
                 <div class="home-section">
                     <div class="hero-content">
-                        <div class="greeting">I'm</div>
-                        <h1 class="hero-name">Prasanta Badatya</h1>
-                        <p class="hero-title">Backend Developer & Full Stack Consultant</p>
+                        <div class="greeting" aria-hidden="true">I'm</div>
+                        <h1 id="hero-heading" class="hero-name">Prasanta Badatya</h1>
+                        <p class="hero-title" role="doc-subtitle">Backend Developer & Full Stack Consultant</p>
                         <p class="hero-description">
                             Experienced Full Stack Developer with 2+ years specializing in Django backend development.
                             Currently leading a development team and building scalable web applications with modern
@@ -60,24 +103,24 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya" class="profile-photo">
+                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya - Backend Developer and Django Python Expert" class="profile-photo">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section about-section">
+        <section id="about" class="section about-section" aria-labelledby="about-heading">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
+                    <h2 id="about-heading" class="section-title">About Me</h2>
                     <p class="section-subtitle">
                         Passionate about creating efficient, scalable backend solutions and leading development teams
                     </p>
                 </div>
                 <div class="about-content">
                     <div class="hero-image">
-                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya" class="profile-photo">
+                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya - Professional headshot of Backend Developer" class="profile-photo" loading="lazy">
                     </div>
                     <div class="about-text-content">
                         <p class="about-text">
@@ -124,10 +167,10 @@
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio" class="section portfolio-section">
+        <section id="portfolio" class="section portfolio-section" aria-labelledby="portfolio-heading">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">My Portfolio</h2>
+                    <h2 id="portfolio-heading" class="section-title">My Portfolio</h2>
                     <p class="section-subtitle">
                         Featured projects showcasing my expertise in backend development and full-stack solutions
                     </p>
@@ -137,7 +180,7 @@
                     <div class="portfolio-item">
                         <div class="portfolio-image">
                             <i class="fas fa-server"></i>
-                            <img src="images/md_backend.png" alt="md_app">
+                            <img src="images/md_backend.png" alt="Scalable REST API Backend project - Django REST Framework with PostgreSQL database architecture" loading="lazy">
                             <div class="image-placeholder">Backend API</div>
                         </div>
                         <div class="portfolio-content">
@@ -162,7 +205,7 @@
                     <div class="portfolio-item">
                         <div class="portfolio-image">
                             <i class="fas fa-robot"></i>
-                            <img src="images/chatbot_screen.jpeg" alt="md_chatbot">
+                            <img src="images/chatbot_screen.jpeg" alt="Enterprise AI Chatbot System screenshot - Django backend with Gemini AI integration" loading="lazy">
                             <div class="image-placeholder">AI Chatbot screenshot</div>
                         </div>
                     
@@ -189,7 +232,7 @@
                     <div class="portfolio-item">
                         <div class="portfolio-image">
                             <i class="fas fa-globe"></i>
-                            <img src="images/md_app_bg_black.png" alt="md_app">
+                            <img src="images/md_app_bg_black.png" alt="Angular Web Application interface - Modern responsive web app with TypeScript" loading="lazy">
                             <div class="image-placeholder">Web app</div>
                         </div>
                         <div class="portfolio-content">
@@ -215,10 +258,10 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="section experience-section">
+        <section id="experience" class="section experience-section" aria-labelledby="experience-heading">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Experience</h2>
+                    <h2 id="experience-heading" class="section-title">Experience</h2>
                     <p class="section-subtitle">
                         Professional journey in backend development and team leadership
                     </p>
@@ -256,10 +299,10 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
+        <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Let's Work Together</h2>
+                    <h2 id="contact-heading" class="section-title">Let's Work Together</h2>
                     <p class="section-subtitle">
                         Ready to bring your next project to life? Let's discuss how I can help.
                     </p>
@@ -324,6 +367,59 @@
         </section>
     </main>
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Prasanta Badatya",
+        "jobTitle": "Backend Developer & Full Stack Consultant",
+        "description": "Backend Developer specializing in Django, Python, REST APIs. 2+ years experience building scalable web applications.",
+        "url": "https://prasantabadatya.github.io/portfolio/",
+        "image": "https://prasantabadatya.github.io/portfolio/images/my_portfolio_image.png",
+        "email": "prasantabadatya651@gmail.com",
+        "telephone": "+917077691500",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mumbai",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "India"
+        },
+        "sameAs": [
+            "https://linkedin.com/in/prasantabadatya",
+            "https://github.com/prasantabadatya"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Adhyay Infotech Private Limited"
+        },
+        "knowsAbout": [
+            "Django",
+            "Python",
+            "Backend Development",
+            "REST APIs",
+            "PostgreSQL",
+            "MySQL",
+            "Angular",
+            "TypeScript",
+            "Full Stack Development",
+            "AI Integration",
+            "Gemini AI",
+            "Team Leadership",
+            "Software Engineering"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Software Engineer",
+            "occupationLocation": {
+                "@type": "City",
+                "name": "Mumbai"
+            },
+            "skills": "Django, Python, REST APIs, PostgreSQL, Angular, TypeScript"
+        }
+    }
+    </script>
+    
     <script src="js/main.js"></script>
 </body>
 
