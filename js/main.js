@@ -1,3 +1,14 @@
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 600);
+    }, 1200); // Show preloader for 1.2 seconds
+});
+
 // Mobile menu toggle
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
