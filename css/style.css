@@ -339,6 +339,20 @@ body {
     overflow: hidden;
 }
 
+/* Highlight Django skills */
+.skill-item:first-child,
+.skill-item:nth-child(2) {
+    background: linear-gradient(145deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 107, 53, 0.03) 100%);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    transform: scale(1.02);
+}
+
+.skill-item:first-child .skill-name,
+.skill-item:nth-child(2) .skill-name {
+    color: #ff8f65;
+    font-weight: 700;
+}
+
 .skill-item::before {
     content: '';
     position: absolute;
