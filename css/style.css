@@ -476,6 +476,70 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     animation: scrollShow 1s var(--ease) 2.5s forwards;
 }
 @keyframes scrollShow { to { opacity: 1; } }
+
+/* ============ SCROLL TO TOP ============ */
+#scroll-top-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    pointer-events: none;
+    transition: opacity .35s ease, transform .4s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
+    isolation: isolate;
+}
+/* Spinning gradient ring */
+#scroll-top-btn::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--cyan), var(--purple), var(--cyan));
+    animation: spinBorder 2.5s linear infinite;
+    z-index: -2;
+}
+/* Dark fill */
+#scroll-top-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    z-index: -1;
+}
+#scroll-top-btn i {
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+#scroll-top-btn:hover {
+    filter: drop-shadow(0 0 14px rgba(14,165,233,0.55)) drop-shadow(0 0 28px rgba(167,139,250,0.3));
+}
+#scroll-top-btn:hover i {
+    transform: translateY(-3px);
+}
+#scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+@keyframes spinBorder {
+    to { transform: rotate(360deg); }
+}
 .scroll-line {
     width: 1px; height: 56px;
     background: linear-gradient(to bottom, var(--cyan), transparent);

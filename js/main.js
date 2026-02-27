@@ -410,6 +410,21 @@ setTimeout(() => {
     gsap.from('.hero-image-wrapper',{ opacity: 0, x: 60, duration: 1.1, delay: .3, ease: 'power3.out' });
 }, 1950);
 
+// ============ SCROLL TO TOP ============
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.5) {
+        scrollTopBtn.classList.add('visible');
+    } else {
+        scrollTopBtn.classList.remove('visible');
+    }
+}, { passive: true });
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // ============ RESUME DOWNLOAD ============
 function downloadResume(event) {
     event.preventDefault();
