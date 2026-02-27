@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
     <title>Django Developer - Prasanta Badatya | Python Backend Developer Mumbai</title>
     <meta name="description" content="Django Developer in Mumbai with 2+ years experience. Expert in Django REST Framework, Python backend development, PostgreSQL, and scalable web applications.">
@@ -16,7 +16,7 @@
     <meta name="geo.placename" content="Mumbai">
     <meta name="geo.position" content="19.0760;72.8777">
     <meta name="ICBM" content="19.0760, 72.8777">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Django Developer - Prasanta Badatya | Python Backend Developer Mumbai">
@@ -25,18 +25,18 @@
     <meta property="og:url" content="https://github.com/prasanta-badatya/portfolio/">
     <meta property="og:site_name" content="Prasanta Badatya Portfolio">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Django Developer - Prasanta Badatya | Python Backend Developer Mumbai">
     <meta name="twitter:description" content="Django Developer in Mumbai with 2+ years experience. Expert in Django REST Framework, Python backend development, PostgreSQL, and scalable web applications.">
     <meta name="twitter:image" content="https://github.com/prasanta-badatya/portfolio/blob/main/images/my_portfolio_image.png">
     <meta name="twitter:creator" content="@prasantabadatya">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://prasantabadatya.github.io/portfolio/">
 
-    <!-- Additional SEO for Django Developer searches -->
+    <!-- Additional SEO -->
     <meta name="google-site-verification" content="your-verification-code-here">
     <meta name="msvalidate.01" content="your-bing-verification-code">
     <meta property="article:author" content="Prasanta Badatya">
@@ -45,52 +45,62 @@
     <meta property="article:tag" content="Python Backend">
     <meta property="article:tag" content="REST API">
     <meta property="article:tag" content="PostgreSQL">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    <link rel="preload" href="images/my_portfolio_image.png" as="image">
-    
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon.svg">
     <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#ff6b35">
-    
-    <!-- Stylesheets -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="theme-color" content="#0ea5e9">
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Styles -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Modern Preloader -->
-    <div id="preloader" class="preloader">
-        <div class="preloader-content">
-            <div class="preloader-logo">PB</div>
-            <div class="preloader-spinner"></div>
-            <p class="preloader-text">Loading Portfolio...</p>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"  aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+        <div class="preloader-logo">PB</div>
+        <div class="preloader-bar-wrap">
+            <div class="preloader-bar"></div>
         </div>
+        <p class="preloader-text">Initializing...</p>
     </div>
-    
-    <!-- Skip to main content for screen readers -->
+
+    <!-- Skip Link -->
     <a href="#main" class="skip-link">Skip to main content</a>
-    
-    <!-- Header Navigation -->
+
+    <!-- Header -->
     <header class="header" role="banner">
         <div class="nav-container">
-            <a href="#home" class="logo" aria-label="Prasanta Badatya Portfolio Home">PB</a>
+            <a href="#home" class="logo" aria-label="Prasanta Badatya Portfolio">PB</a>
             <nav class="nav-menu" role="navigation" aria-label="Main navigation">
-                <a href="#home" class="nav-item active" aria-current="page">Home</a>
-                <a href="#about" class="nav-item">About</a>
-                <a href="#portfolio" class="nav-item">Portfolio</a>
+                <a href="#home"       class="nav-item active" aria-current="page">Home</a>
+                <a href="#about"      class="nav-item">About</a>
+                <a href="#portfolio"  class="nav-item">Portfolio</a>
                 <a href="#experience" class="nav-item">Experience</a>
-                <a href="#contact" class="nav-item">Contact</a>
+                <a href="#contact"    class="nav-item">Contact</a>
             </nav>
             <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span class="hamburger-line"></span>
@@ -100,135 +110,238 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main id="main" class="main-content" role="main">
-        <!-- Home Section -->
-        <section id="home" class="section" aria-labelledby="hero-heading">
+    <!-- Main -->
+    <main id="main" role="main">
+
+        <!-- ===== HOME ===== -->
+        <section id="home" class="section hero-section" aria-labelledby="hero-heading">
+            <canvas id="heroCanvas" aria-hidden="true"></canvas>
+            <div class="hero-noise"  aria-hidden="true"></div>
+
             <div class="container">
                 <div class="home-section">
+
+                    <!-- Left: Content -->
                     <div class="hero-content">
-                        <div class="greeting" aria-hidden="true">I'm</div>
-                        <h1 id="hero-heading" class="hero-name">Prasanta Badatya</h1>
-                        <p class="hero-title" role="doc-subtitle">Django Developer & Python Backend Specialist</p>
+                        <div class="hero-badge" aria-label="Available for work">
+                            <span class="badge-dot"></span>
+                            Available for opportunities
+                        </div>
+
+                        <p class="greeting" aria-hidden="true">// Hello, I'm</p>
+
+                        <h1 id="hero-heading" class="hero-name">
+                            <span class="n1">Prasanta</span>
+                            <span class="n2">Badatya</span>
+                        </h1>
+
+                        <p class="hero-title" role="doc-subtitle">Django Developer &amp; Python Backend Specialist</p>
+
                         <p class="hero-description">
-                            Professional Django Developer with 2+ years of hands-on experience building enterprise-grade backend systems.
-                            Expert in Django REST Framework, PostgreSQL optimization, and AI-powered solutions.
-                            Currently leading development teams at Adhyay Infotech, delivering scalable applications for 10,000+ users.
+                            Professional Django Developer with 2+ years of hands-on experience building
+                            enterprise-grade backend systems. Expert in Django REST Framework,
+                            PostgreSQL optimization, and AI-powered solutions — currently leading
+                            development at Adhyay Infotech, serving 10,000+ users.
                         </p>
 
-                        <!-- New: Key Stats -->
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">2+</div>
-                                <div class="stat-label">Years Django</div>
+                        <div class="hero-stats" role="list">
+                            <div class="stat-item" role="listitem">
+                                <span class="stat-number" data-target="2" data-suffix="+">2+</span>
+                                <span class="stat-label">Years Django</span>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-number">10K+</div>
-                                <div class="stat-label">Users Served</div>
+                            <div class="stat-item" role="listitem">
+                                <span class="stat-number" data-target="10" data-suffix="K+">10K+</span>
+                                <span class="stat-label">Users Served</span>
                             </div>
                         </div>
-                        
+
                         <div class="hero-actions">
-                            <a href="#contact" class="cta-button">Contact Me</a>
-                            <a href="#portfolio" class="cta-button secondary">View Work</a>
-                            <!-- <button onclick="downloadResume()" class="cta-button secondary">Download Resume</button> -->
-                        </div>
-                        <div class="hero-links">
-                            <a href="https://www.linkedin.com/in/prasanta-badatya"  class="portfolio-link" target="_blank">
-                                <i class="fab fa-linkedin"></i>
-                                LinkedIn  <i class="fas fa-arrow-right"></i>
+                            <a href="#contact"   class="cta-button">
+                                <i class="fas fa-paper-plane"></i> Contact Me
+                                <div class="btn-shine"></div>
                             </a>
-                            <!-- <a href="https://github.com/prasanta-badatya/" target="_blank"><i class="fab fa-github"></i></a> -->
+                            <a href="#portfolio" class="cta-button secondary">
+                                <i class="fas fa-code"></i> View Work
+                                <div class="btn-shine"></div>
+                            </a>
+                        </div>
+
+                        <div class="hero-links">
+                            <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
                         </div>
                     </div>
-                    <div class="hero-image">
-                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya - Django Developer and Python Backend Specialist" class="profile-photo">
+
+                    <!-- Right: Visual -->
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="hero-image-wrapper">
+                            <div class="image-ring ring-1"></div>
+                            <div class="image-ring ring-2"></div>
+                            <div class="image-ring ring-3"></div>
+
+                            <img src="images/my_portfolio_image.png"
+                                 alt="Prasanta Badatya — Django Developer and Python Backend Specialist"
+                                 class="profile-photo">
+
+                            <div class="floating-badge tech-badge-1">
+                                <i class="fab fa-python"></i> Python
+                            </div>
+                            <div class="floating-badge tech-badge-2">
+                                <i class="fas fa-server"></i> Django REST
+                            </div>
+                            <div class="floating-badge tech-badge-3">
+                                <i class="fas fa-database"></i> PostgreSQL
+                            </div>
+                            <div class="floating-badge tech-badge-4">
+                                <i class="fab fa-angular"></i> Angular
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ===== ABOUT ===== -->
         <section id="about" class="section about-section" aria-labelledby="about-heading">
             <div class="container">
+
                 <div class="section-header">
-                    <h2 id="about-heading" class="section-title">About Me</h2>
+                    <div class="section-label">01 / About</div>
+                    <h2 id="about-heading" class="section-title">About <span class="g">Me</span></h2>
                     <p class="section-subtitle">
                         Django Developer passionate about building scalable REST APIs and leading development teams
                     </p>
                 </div>
-                <div class="about-content">
-                    <div class="hero-image">
-                        <img src="images/my_portfolio_image.png" alt="Prasanta Badatya - Professional headshot of Backend Developer" class="profile-photo" loading="lazy">
+
+                <!-- Bio Row: text + stats panel -->
+                <div class="about-bio-row">
+                    <div class="about-bio-text">
+                        <p class="about-text">
+                            I'm a dedicated Django Developer with expertise in Python backend development
+                            and Django REST Framework. With over 2 years of experience at Adhyay Infotech
+                            Private Limited, I've built scalable backend systems, led development projects,
+                            mentored junior developers, and implemented modern solutions including
+                            AI-powered chatbots using Django.
+                        </p>
+                        <p class="about-text">
+                            My Django expertise includes building high-performance REST APIs with Django
+                            REST Framework, optimizing PostgreSQL database performance, and integrating
+                            modern technologies like Gemini AI. I focus on writing clean, efficient
+                            Django code and implementing best practices in Python backend development.
+                        </p>
                     </div>
-                    <div class="about-text-content">
-                        <p class="about-text">
-                            I'm a dedicated Django Developer with expertise in Python backend development and Django REST Framework.
-                            With over 2 years of experience at Adhyay Infotech Private Limited, I've
-                            built scalable backend systems, led development projects, mentored junior developers, and implemented
-                            modern solutions including AI-powered chatbots using Django.
-                        </p>
-                        <p class="about-text">
-                            My Django expertise includes building high-performance REST APIs with Django REST Framework, optimizing PostgreSQL database performance,
-                            and integrating modern technologies like Gemini AI. I focus on writing clean, efficient Django code
-                            and implementing best practices in Python backend development.
-                        </p>
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <div class="skill-name">Python</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <div class="skill-name">Django & Django REST framework </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fas fa-database"></i>
-                                </div>
-                                <div class="skill-name">PostgreSQL & MySQL</div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-icon">
-                                    <i class="fab fa-angular"></i>
-                                </div>
-                                <div class="skill-name">Angular & TypeScript</div>
-                            </div>
-                            
+
+                    <!-- Stats Panel -->
+                    <div class="about-stats-panel">
+                        <div class="about-stat-row">
+                            <span class="stat-number" data-target="2" data-suffix="+">2+</span>
+                            <span class="stat-label">Years of Django Experience</span>
+                        </div>
+                        <div class="about-stat-row">
+                            <span class="stat-number" data-target="10" data-suffix="K+">10K+</span>
+                            <span class="stat-label">Users Served</span>
+                        </div>
+                        <div class="about-stat-row">
+                            <span class="stat-number" data-target="20" data-suffix="%">20%</span>
+                            <span class="stat-label">Performance Improvement</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Tech Arsenal -->
+                <div class="tech-arsenal-label">// Tech Arsenal</div>
+                <div class="tech-arsenal">
+
+                    <div class="arsenal-cat cat-backend">
+                        <div class="arsenal-cat-head">
+                            <i class="fas fa-server" aria-hidden="true"></i>
+                            <span>Backend</span>
+                        </div>
+                        <div class="arsenal-tags">
+                            <span class="a-tag">Python</span>
+                            <span class="a-tag">Django</span>
+                            <span class="a-tag">Django REST Framework</span>
+                        </div>
+                    </div>
+
+                    <div class="arsenal-cat cat-db">
+                        <div class="arsenal-cat-head">
+                            <i class="fas fa-database" aria-hidden="true"></i>
+                            <span>Database</span>
+                        </div>
+                        <div class="arsenal-tags">
+                            <span class="a-tag">PostgreSQL</span>
+                            <span class="a-tag">MySQL</span>
+                            <span class="a-tag">Redis</span>
+                        </div>
+                    </div>
+
+                    <div class="arsenal-cat cat-frontend">
+                        <div class="arsenal-cat-head">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                            <span>Frontend</span>
+                        </div>
+                        <div class="arsenal-tags">
+                            <span class="a-tag">Angular</span>
+                            <span class="a-tag">TypeScript</span>
+                            <span class="a-tag">HTML5 / CSS3</span>
+                        </div>
+                    </div>
+
+                    <div class="arsenal-cat cat-tools">
+                        <div class="arsenal-cat-head">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            <span>DevOps &amp; AI</span>
+                        </div>
+                        <div class="arsenal-tags">
+                            <span class="a-tag">Docker</span>
+                            <span class="a-tag">Git</span>
+                            <span class="a-tag">Gemini AI</span>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
-        <!-- Portfolio Section -->
+        <!-- ===== PORTFOLIO ===== -->
         <section id="portfolio" class="section portfolio-section" aria-labelledby="portfolio-heading">
             <div class="container">
+
                 <div class="section-header">
-                    <h2 id="portfolio-heading" class="section-title">My Portfolio</h2>
+                    <div class="section-label">02 / Portfolio</div>
+                    <h2 id="portfolio-heading" class="section-title">Featured <span class="g">Projects</span></h2>
                     <p class="section-subtitle">
-                        Featured Django projects showcasing expertise in Python backend development and REST API solutions
+                        Showcasing expertise in Python backend development, REST APIs, and AI-powered solutions
                     </p>
                 </div>
+
                 <div class="portfolio-grid">
 
+                    <!-- Project 1 -->
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <i class="fas fa-server"></i>
-                            <img src="images/md_backend.png" alt="Scalable REST API Backend project - Django REST Framework with PostgreSQL database architecture" loading="lazy">
-                            <div class="image-placeholder">Backend API</div>
+                            <div class="project-badge backend">Backend</div>
+                            <img src="images/md_backend.png"
+                                 alt="Scalable REST API Backend — Django REST Framework with PostgreSQL"
+                                 loading="lazy">
+                            <div class="portfolio-image-overlay"></div>
                         </div>
                         <div class="portfolio-content">
-                            <div class="project-badge">Backend</div>
                             <h3 class="portfolio-title">Scalable Django Backend System</h3>
                             <p class="portfolio-description">
-                                Enterprise-grade Django backend serving 10,000+ concurrent users. Built RESTful APIs with
-                                advanced ORM optimization, Redis caching, and PostgreSQL performance tuning.
-                                Achieved 20% performance improvement through database optimization.
+                                Enterprise-grade Django backend serving 10,000+ concurrent users. Built
+                                RESTful APIs with advanced ORM optimization, Redis caching, and PostgreSQL
+                                performance tuning. Achieved 20% performance improvement.
                             </p>
                             <div class="project-metrics">
                                 <span class="metric">10K+ Users</span>
@@ -242,26 +355,27 @@
                                 <span class="tech-tag">Docker</span>
                                 <span class="tech-tag">Git</span>
                             </div>
-                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link"  target="_blank" >
+                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link" target="_blank" rel="noopener noreferrer">
                                 View Project <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
 
+                    <!-- Project 2 -->
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <i class="fas fa-robot"></i>
-                            <img src="images/chatbot_screen.jpeg" alt="Enterprise AI Chatbot System screenshot - Django backend with Gemini AI integration" loading="lazy">
-                            <div class="image-placeholder">AI Chatbot screenshot</div>
-                        </div>
-                    
-                        <div class="portfolio-content">
                             <div class="project-badge ai">AI Project</div>
+                            <img src="images/chatbot_screen.jpeg"
+                                 alt="Enterprise AI Chatbot System — Django backend with Gemini AI"
+                                 loading="lazy">
+                            <div class="portfolio-image-overlay"></div>
+                        </div>
+                        <div class="portfolio-content">
                             <h3 class="portfolio-title">Django AI Chatbot System</h3>
                             <p class="portfolio-description">
-                                Intelligent chatbot backend using Django REST Framework with Gemini AI integration.
-                                Features real-time messaging, context-aware responses, and enterprise-grade security.
-                                Successfully deployed for customer support automation.
+                                Intelligent chatbot backend using Django REST Framework with Gemini AI
+                                integration. Features real-time messaging, context-aware responses,
+                                and enterprise-grade security for customer support automation.
                             </p>
                             <div class="project-metrics">
                                 <span class="metric">Real-time</span>
@@ -275,23 +389,27 @@
                                 <span class="tech-tag">MySQL</span>
                                 <span class="tech-tag">Angular</span>
                             </div>
-                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link"  target="_blank" >
+                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link" target="_blank" rel="noopener noreferrer">
                                 View Project <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
 
+                    <!-- Project 3 -->
                     <div class="portfolio-item">
                         <div class="portfolio-image">
-                            <i class="fas fa-globe"></i>
-                            <img src="images/md_app_bg_black.png" alt="Angular Web Application interface - Modern responsive web app with TypeScript" loading="lazy">
-                            <div class="image-placeholder">Web app</div>
+                            <div class="project-badge frontend">Frontend</div>
+                            <img src="images/md_app_bg_black.png"
+                                 alt="Angular Web Application — Modern responsive web app"
+                                 loading="lazy">
+                            <div class="portfolio-image-overlay"></div>
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Angular Web Application</h3>
                             <p class="portfolio-description">
-                                Developed modern web application frontend using Angular with optimized performance
-                                and user experience. Implemented responsive design and component-based architecture.
+                                Developed a modern web application frontend using Angular with optimized
+                                performance and stellar user experience. Implemented responsive design
+                                and component-based architecture.
                             </p>
                             <div class="tech-tags">
                                 <span class="tech-tag">Angular</span>
@@ -300,148 +418,158 @@
                                 <span class="tech-tag">CSS3</span>
                                 <span class="tech-tag">Bootstrap</span>
                             </div>
-                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link"  target="_blank" >
+                            <a href="https://mobiledairy.co.in/?lan=en" class="portfolio-link" target="_blank" rel="noopener noreferrer">
                                 View Project <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- ===== EXPERIENCE ===== -->
         <section id="experience" class="section experience-section" aria-labelledby="experience-heading">
             <div class="container">
+
                 <div class="section-header">
-                    <h2 id="experience-heading" class="section-title">Experience</h2>
+                    <div class="section-label">03 / Experience</div>
+                    <h2 id="experience-heading" class="section-title">Work <span class="g">Experience</span></h2>
                     <p class="section-subtitle">
                         Professional journey in Django development and Python backend engineering
                     </p>
                 </div>
+
                 <div class="timeline">
+                    <div class="timeline-line" aria-hidden="true"></div>
+
                     <div class="timeline-item">
-                        <div class="timeline-date">July 2023 - Present</div>
+                        <div class="timeline-dot" aria-hidden="true"></div>
+
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                            July 2023 &mdash; Present
+                        </div>
                         <h3 class="timeline-title">Software Engineer</h3>
                         <div class="timeline-company">Adhyay Infotech Private Limited</div>
+
                         <div class="timeline-description">
-                            <p>Leading Django backend development and REST API architecture at Adhyay Infotech. Building scalable Python applications,
-                                optimizing PostgreSQL database performance, and mentoring junior Django developers in modern development practices.</p>
+                            <p>Leading Django backend development and REST API architecture at Adhyay Infotech.
+                            Building scalable Python applications, optimizing PostgreSQL database performance,
+                            and mentoring junior Django developers in modern development practices.</p>
+                        </div>
 
-                            <div class="achievement-grid">
-                                <div class="achievement-item">
-                                    <div class="achievement-icon"><i class="fas fa-users"></i></div>
-                                    <div class="achievement-text">
-                                        <strong>10,000+ Users</strong>
-                                        <span>Built high-performance Django systems serving concurrent users</span>
-                                    </div>
+                        <div class="achievement-grid">
+                            <div class="achievement-item">
+                                <div class="achievement-icon"><i class="fas fa-users"></i></div>
+                                <div class="achievement-text">
+                                    <strong>10,000+ Users</strong>
+                                    <span>High-performance Django systems serving concurrent users</span>
                                 </div>
-
-                                <div class="achievement-item">
-                                    <div class="achievement-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="achievement-text">
-                                        <strong>20% Performance Boost</strong>
-                                        <span>Optimized Django REST APIs using advanced Python techniques</span>
-                                    </div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="achievement-text">
+                                    <strong>20% Performance Boost</strong>
+                                    <span>Optimized Django REST APIs using advanced Python techniques</span>
                                 </div>
-
-                                <div class="achievement-item">
-                                    <div class="achievement-icon"><i class="fas fa-robot"></i></div>
-                                    <div class="achievement-text">
-                                        <strong>AI Integration</strong>
-                                        <span>Deployed chatbot using Django REST Framework and Gemini AI</span>
-                                    </div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-icon"><i class="fas fa-robot"></i></div>
+                                <div class="achievement-text">
+                                    <strong>AI Integration</strong>
+                                    <span>Deployed chatbot using Django REST Framework &amp; Gemini AI</span>
                                 </div>
-
-                                <div class="achievement-item">
-                                    <div class="achievement-icon"><i class="fas fa-shield-alt"></i></div>
-                                    <div class="achievement-text">
-                                        <strong>Security & Best Practices</strong>
-                                        <span>Implemented Django security, caching, and database optimization</span>
-                                    </div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="achievement-text">
+                                    <strong>Security &amp; Best Practices</strong>
+                                    <span>Implemented Django security, caching, and DB optimization</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">Python</span>
+
+                        <div class="tech-tags" style="margin-top:22px;">
+                            <span class="tech-tag primary">Django</span>
+                            <span class="tech-tag primary">Python</span>
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Angular</span>
-                            <!-- <span class="tech-tag">AWS</span> -->
-                            <span class="tech-tag">Gemini AI</span>
+                            <span class="tech-tag ai">Gemini AI</span>
                             <span class="tech-tag">Team Leadership</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ===== CONTACT ===== -->
         <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
             <div class="container">
+
                 <div class="section-header">
-                    <h2 id="contact-heading" class="section-title">Let's Work Together</h2>
+                    <div class="section-label">04 / Contact</div>
+                    <h2 id="contact-heading" class="section-title">Let's <span class="g">Work Together</span></h2>
                     <p class="section-subtitle">
                         Ready to bring your next project to life? Let's discuss how I can help.
                     </p>
                 </div>
+
                 <div class="contact-content">
-                    <div class="contact-info">
-                        <!-- <div class="contact-item">
-                            <a href="mailto:prasantabadatya651@gmail.com">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-label">Email</div>
-                                <div class="contact-value">prasantabadatya651@gmail.com</div>
-                            </a>
-                        </div> -->
-                        <div class="contact-item">
-                            <a href="tel:+917077691500">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
-                                </div>
+                    <div class="contact-info" role="list">
+
+                        <div class="contact-item" role="listitem">
+                            <a href="tel:+917077691500" aria-label="Call Prasanta Badatya">
+                                <div class="contact-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
                                 <div class="contact-label">Phone</div>
-                                <div class="contact-value">+91 7077691500</div>
+                                <div class="contact-value">+91 70776 91500</div>
                             </a>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+
+                        <div class="contact-item" role="listitem">
+                            <div>
+                                <a href="#">
+                                    <div class="contact-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+                                    <div class="contact-label">Location</div>
+                                    <div class="contact-value">Mumbai, Maharashtra</div>
+                                </a>
                             </div>
-                            <div class="contact-label">Location</div>
-                            <div class="contact-value">Mumbai, Maharashtra</div>
                         </div>
-                        <div class="contact-item">
-                            <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank">
-                                <div class="contact-icon">
-                                    <i class="fab fa-linkedin"></i>
-                                </div>
+
+                        <div class="contact-item" role="listitem">
+                            <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer" aria-label="Prasanta Badatya LinkedIn Profile">
+                                <div class="contact-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
                                 <div class="contact-label">LinkedIn</div>
                                 <div class="contact-value">Connect with me</div>
                             </a>
                         </div>
 
-                        <div class="contact-item">
-                            <a href="#"  onclick="downloadResume(event)">
-                                <div class="contact-icon">
-                                    <i class="fas fa-download"></i>
-                                </div>
+                        <div class="contact-item" role="listitem">
+                            <a href="#" onclick="downloadResume(event)" aria-label="Download Prasanta Badatya Resume">
+                                <div class="contact-icon"><i class="fas fa-file-arrow-down" aria-hidden="true"></i></div>
                                 <div class="contact-label">Resume</div>
-                                <div class="contact-value">Download</div>
+                                <div class="contact-value">Download PDF</div>
                             </a>
                         </div>
+
                     </div>
+
                     <div class="contact-actions">
                         <a href="mailto:prasantabadatya651@gmail.com" class="cta-button">
                             <i class="fas fa-envelope"></i> Send Email
+                            <div class="btn-shine"></div>
                         </a>
                         <a href="tel:+917077691500" class="cta-button secondary">
                             <i class="fas fa-phone"></i> Call Now
+                            <div class="btn-shine"></div>
                         </a>
                     </div>
                 </div>
+
             </div>
         </section>
+
     </main>
 
     <!-- Schema.org Structured Data -->
@@ -471,48 +599,15 @@
             "name": "Adhyay Infotech Private Limited"
         },
         "knowsAbout": [
-            "Django",
-            "Python",
-            "Backend Development",
-            "REST APIs",
-            "PostgreSQL",
-            "MySQL",
-            "Angular",
-            "TypeScript",
-            "Full Stack Development",
-            "AI Integration",
-            "Gemini AI",
-            "Team Leadership",
-            "Software Engineering"
-        ],
-        "hasOccupation": {
-            "@type": "Occupation",
-            "name": "Software Engineer",
-            "occupationLocation": {
-                "@type": "City",
-                "name": "Mumbai"
-            },
-            "skills": "Django, Django REST Framework, Python, PostgreSQL, MySQL, Angular, TypeScript, AI Integration"
-        }
-    },
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Django Development Services",
-        "description": "Professional Django backend development services in Mumbai. Expert in Django REST Framework, Python, PostgreSQL, and scalable web application development.",
-        "provider": {
-            "@type": "Person",
-            "name": "Prasanta Badatya"
-        },
-        "areaServed": {
-            "@type": "Place",
-            "name": "Mumbai, India"
-        },
-        "serviceType": "Django Development"
+            "Django", "Python", "Backend Development", "REST APIs",
+            "PostgreSQL", "MySQL", "Angular", "TypeScript",
+            "AI Integration", "Gemini AI", "Team Leadership", "Software Engineering"
+        ]
     }
     </script>
-    
-    <script src="js/main.js"></script>
-</body>
 
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+
+</body>
 </html>
