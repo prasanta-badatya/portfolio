@@ -39,7 +39,7 @@ document.addEventListener('mousemove', e => {
     requestAnimationFrame(trackRing);
 })();
 
-document.querySelectorAll('a, button, .portfolio-item, .skill-item, .contact-item, .cta-button, .arsenal-cat').forEach(el => {
+document.querySelectorAll('a, button, .portfolio-item, .skill-item, .contact-item, .cta-button, .arsenal-cat, .footer-social a, .footer-resume').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
 });
@@ -190,12 +190,21 @@ mobileToggle.addEventListener('click', () => {
 });
 
 // ============ SMOOTH NAV CLICK ============
+function closeMobileMenu() {
+    navMenu.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    const lines = mobileToggle.querySelectorAll('.hamburger-line');
+    gsap.to(lines[0], { rotation: 0, y: 0, duration: .3 });
+    gsap.to(lines[1], { opacity: 1,         duration: .3 });
+    gsap.to(lines[2], { rotation: 0, y: 0, duration: .3 });
+}
+
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', e => {
         e.preventDefault();
         const target = document.querySelector(item.getAttribute('href'));
         if (!target) return;
-        navMenu.classList.remove('active');
+        closeMobileMenu();
         const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top: y, behavior: 'smooth' });
     });
@@ -306,17 +315,12 @@ gsap.timeline({
 }, '-=0.1');
 
 // --- Contact ---
-// Use the section as trigger (more reliable than inner elements near page bottom)
-gsap.from('.contact-item', {
+gsap.from('.contact-cta-row .cta-button', {
     immediateRender: false,
     scrollTrigger: { trigger: '.contact-section', start: 'top 65%', once: true },
-    opacity: 0, y: 40, duration: .6, stagger: .1, ease: 'power3.out'
+    opacity: 0, y: 24, duration: .6, stagger: .12, ease: 'power3.out'
 });
-gsap.from('.contact-actions .cta-button', {
-    immediateRender: false,
-    scrollTrigger: { trigger: '.contact-section', start: 'top 55%', once: true },
-    opacity: 0, y: 22, duration: .55, stagger: .12, ease: 'power3.out'
-});
+
 
 // ============ COUNTER ANIMATION ============
 function animateCount(el, end, suffix) {
@@ -424,6 +428,10 @@ window.addEventListener('scroll', () => {
 scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// ============ FOOTER YEAR ============
+const yearEl = document.getElementById('footer-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ============ RESUME DOWNLOAD ============
 function downloadResume(event) {

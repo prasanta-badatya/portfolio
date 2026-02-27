@@ -175,6 +175,9 @@
                             <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-linkedin"></i> LinkedIn
                             </a>
+                            <a href="https://github.com/prasantabadatya" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
                         </div>
                     </div>
 
@@ -416,6 +419,11 @@
                                 performance and stellar user experience. Implemented responsive design
                                 and component-based architecture.
                             </p>
+                            <div class="project-metrics">
+                                <span class="metric">Responsive</span>
+                                <span class="metric">Component-Based</span>
+                                <span class="metric">Cross-Browser</span>
+                            </div>
                             <div class="tech-tags">
                                 <span class="tech-tag">Angular</span>
                                 <span class="tech-tag">TypeScript</span>
@@ -511,8 +519,8 @@
 
         <!-- ===== CONTACT ===== -->
         <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+            <div class="contact-bg-glow" aria-hidden="true"></div>
             <div class="container">
-
                 <div class="section-header">
                     <div class="section-label">04 / Contact</div>
                     <h2 id="contact-heading" class="section-title">Let's <span class="g">Work Together</span></h2>
@@ -520,62 +528,56 @@
                         Ready to bring your next project to life? Let's discuss how I can help.
                     </p>
                 </div>
-
-                <div class="contact-content">
-                    <div class="contact-info" role="list">
-
-                        <div class="contact-item" role="listitem">
-                            <a href="tel:+917077691500" aria-label="Call Prasanta Badatya">
-                                <div class="contact-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-                                <div class="contact-label">Phone</div>
-                                <div class="contact-value">+91 70776 91500</div>
-                            </a>
-                        </div>
-
-                        <div class="contact-item" role="listitem">
-                            <div>
-                                <a href="#">
-                                    <div class="contact-icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
-                                    <div class="contact-label">Location</div>
-                                    <div class="contact-value">Mumbai, Maharashtra</div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item" role="listitem">
-                            <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer" aria-label="Prasanta Badatya LinkedIn Profile">
-                                <div class="contact-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
-                                <div class="contact-label">LinkedIn</div>
-                                <div class="contact-value">Connect with me</div>
-                            </a>
-                        </div>
-
-                        <div class="contact-item" role="listitem">
-                            <a href="#" onclick="downloadResume(event)" aria-label="Download Prasanta Badatya Resume">
-                                <div class="contact-icon"><i class="fas fa-file-arrow-down" aria-hidden="true"></i></div>
-                                <div class="contact-label">Resume</div>
-                                <div class="contact-value">Download PDF</div>
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="contact-actions">
-                        <a href="mailto:prasantabadatya651@gmail.com" class="cta-button">
-                            <i class="fas fa-envelope"></i> Send Email
-                            <div class="btn-shine"></div>
-                        </a>
-                        <a href="tel:+917077691500" class="cta-button secondary">
-                            <i class="fas fa-phone"></i> Call Now
-                            <div class="btn-shine"></div>
-                        </a>
-                    </div>
+                <div class="contact-cta-row">
+                    <a href="mailto:prasantabadatya651@gmail.com" class="cta-button">
+                        <i class="fas fa-envelope"></i> Send Email
+                        <div class="btn-shine"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer" class="cta-button secondary">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                        <div class="btn-shine"></div>
+                    </a>
                 </div>
-
             </div>
         </section>
 
     </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-glow" aria-hidden="true"></div>
+        <div class="container">
+            <div class="footer-inner">
+
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">PB</a>
+                    <p class="footer-tagline">Building scalable backends,<br>one API at a time.</p>
+                </div>
+
+                <div class="footer-right">
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/prasanta-badatya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/prasantabadatya" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:prasantabadatya651@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    <a href="#" onclick="downloadResume(event)" class="footer-resume">
+                        <i class="fas fa-file-arrow-down"></i> Download Resume
+                    </a>
+                </div>
+
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© <span id="footer-year">2025</span> Prasanta Badatya &nbsp;·&nbsp; Django Developer &nbsp;·&nbsp; Mumbai</p>
+                <p class="footer-made">Crafted with <span class="footer-heart">♥</span> &amp; Python</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
