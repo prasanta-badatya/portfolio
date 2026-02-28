@@ -1038,3 +1038,256 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     body { cursor: auto; }
     .cursor-dot, .cursor-ring { display: none; }
 }
+
+/* =====================================================
+   3D ENHANCEMENT LAYER — World-Class 3D Effects
+   Cubes · Parallax · Holographic · Trail · Grid
+   ===================================================== */
+
+/* ============ PERSPECTIVE GRID FLOORS ============ */
+.perspective-grid {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(rgba(14, 165, 233, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.07) 1px, transparent 1px);
+    background-size: 55px 55px;
+    transform: perspective(500px) rotateX(55deg);
+    transform-origin: center bottom;
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.08) 60%, transparent 88%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.08) 60%, transparent 88%);
+}
+.perspective-grid--purple {
+    background-image:
+        linear-gradient(rgba(167, 139, 250, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(167, 139, 250, 0.06) 1px, transparent 1px);
+}
+
+/* ============ 3D CSS WIREFRAME CUBES ============ */
+.cube-face { position: absolute; }
+
+.geo-cube {
+    position: absolute;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 0;
+    animation: cubeRotate3D 16s linear infinite;
+}
+
+/* Cube 1 — Cyan, 72 × 72 */
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) {
+    width: 72px; height: 72px;
+    top: 4%; right: -22%;
+    opacity: 0.55;
+}
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-face {
+    width: 72px; height: 72px;
+    border: 1px solid rgba(14, 165, 233, 0.55);
+    background: rgba(14, 165, 233, 0.03);
+    box-shadow: inset 0 0 8px rgba(14, 165, 233, 0.15);
+}
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-front  { transform: translateZ(36px); }
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-back   { transform: rotateY(180deg) translateZ(36px); }
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-left   { transform: rotateY(-90deg) translateZ(36px); }
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-right  { transform: rotateY(90deg)  translateZ(36px); }
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-top    { transform: rotateX(90deg)  translateZ(36px); }
+.geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-bottom { transform: rotateX(-90deg) translateZ(36px); }
+
+/* Cube 2 — Purple, 52 × 52 */
+.geo-cube-2 {
+    width: 52px; height: 52px;
+    bottom: 10%; left: -22%;
+    opacity: 0.42;
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+.geo-cube-2 .cube-face {
+    width: 52px; height: 52px;
+    border: 1px solid rgba(167, 139, 250, 0.52);
+    background: rgba(167, 139, 250, 0.03);
+    box-shadow: inset 0 0 6px rgba(167, 139, 250, 0.12);
+}
+.geo-cube-2 .cube-front  { transform: translateZ(26px); }
+.geo-cube-2 .cube-back   { transform: rotateY(180deg) translateZ(26px); }
+.geo-cube-2 .cube-left   { transform: rotateY(-90deg) translateZ(26px); }
+.geo-cube-2 .cube-right  { transform: rotateY(90deg)  translateZ(26px); }
+.geo-cube-2 .cube-top    { transform: rotateX(90deg)  translateZ(26px); }
+.geo-cube-2 .cube-bottom { transform: rotateX(-90deg) translateZ(26px); }
+
+/* Cube 3 — Orange, 38 × 38 */
+.geo-cube-3 {
+    width: 38px; height: 38px;
+    top: -8%; left: 42%;
+    opacity: 0.32;
+    animation-duration: 28s;
+    animation-delay: -5s;
+}
+.geo-cube-3 .cube-face {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(249, 115, 22, 0.5);
+    background: rgba(249, 115, 22, 0.03);
+    box-shadow: inset 0 0 6px rgba(249, 115, 22, 0.1);
+}
+.geo-cube-3 .cube-front  { transform: translateZ(19px); }
+.geo-cube-3 .cube-back   { transform: rotateY(180deg) translateZ(19px); }
+.geo-cube-3 .cube-left   { transform: rotateY(-90deg) translateZ(19px); }
+.geo-cube-3 .cube-right  { transform: rotateY(90deg)  translateZ(19px); }
+.geo-cube-3 .cube-top    { transform: rotateX(90deg)  translateZ(19px); }
+.geo-cube-3 .cube-bottom { transform: rotateX(-90deg) translateZ(19px); }
+
+@keyframes cubeRotate3D {
+    from { transform: rotateX(15deg) rotateY(0deg);   }
+    to   { transform: rotateX(15deg) rotateY(360deg); }
+}
+
+/* ============ PRELOADER 3D CUBE ============ */
+.preloader-cube-wrap {
+    width: 60px; height: 60px;
+    perspective: 200px;
+}
+.preloader-cube {
+    width: 60px; height: 60px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: preloaderCubeRotate 2s linear infinite;
+}
+.preloader-cube .cube-face {
+    width: 60px; height: 60px;
+    border: 1.5px solid rgba(14, 165, 233, 0.55);
+    background: rgba(14, 165, 233, 0.05);
+    box-shadow: inset 0 0 10px rgba(14, 165, 233, 0.12);
+}
+.preloader-cube .cube-front  { transform: translateZ(30px); }
+.preloader-cube .cube-back   { transform: rotateY(180deg) translateZ(30px); }
+.preloader-cube .cube-left   { transform: rotateY(-90deg) translateZ(30px); }
+.preloader-cube .cube-right  { transform: rotateY(90deg)  translateZ(30px); }
+.preloader-cube .cube-top    { transform: rotateX(90deg)  translateZ(30px); }
+.preloader-cube .cube-bottom { transform: rotateX(-90deg) translateZ(30px); }
+@keyframes preloaderCubeRotate {
+    from { transform: rotateX(-30deg) rotateY(0deg);   }
+    to   { transform: rotateX(-30deg) rotateY(360deg); }
+}
+
+/* ============ CURSOR TRAIL PARTICLES ============ */
+.cursor-trail {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99985;
+    transform: translate(-50%, -50%);
+    animation: trailFade 0.65s ease-out forwards;
+    mix-blend-mode: screen;
+}
+@keyframes trailFade {
+    0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(1);   }
+    100% { opacity: 0;    transform: translate(-50%, -50%) scale(0.1); }
+}
+
+/* ============ HERO 3D PARALLAX ============ */
+#heroParallax {
+    transition: transform 0.15s linear;
+    will-change: transform;
+}
+
+/* ============ ARSENAL CARDS — 3D TILT ============ */
+.arsenal-cat { will-change: transform; }
+
+/* ============ ACHIEVEMENT ITEMS — 3D HOVER ============ */
+.achievement-item { transition: all .4s var(--ease) !important; }
+.achievement-item:hover {
+    transform: perspective(400px) rotateY(-4deg) rotateX(2deg) translateX(6px) !important;
+    border-color: var(--border-cyan) !important;
+    background: rgba(14, 165, 233, 0.04) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ============ HERO NAME — 3D DEPTH TEXT ============ */
+.hero-name .n1 {
+    text-shadow:
+        1px 1px 0 rgba(14, 165, 233, 0.2),
+        2px 2px 0 rgba(14, 165, 233, 0.12),
+        3px 3px 8px rgba(14, 165, 233, 0.06);
+    transition: text-shadow 0.4s ease;
+}
+.hero-name:hover .n1 {
+    text-shadow:
+        2px 2px 0 rgba(14, 165, 233, 0.32),
+        4px 4px 0 rgba(14, 165, 233, 0.18),
+        6px 6px 20px rgba(14, 165, 233, 0.15);
+}
+.hero-name .n2 {
+    filter: drop-shadow(2px 3px 0 rgba(167, 139, 250, 0.25))
+            drop-shadow(0 0 20px rgba(14, 165, 233, 0.12));
+    transition: filter 0.4s ease;
+}
+.hero-name:hover .n2 {
+    filter: drop-shadow(4px 5px 0 rgba(167, 139, 250, 0.4))
+            drop-shadow(0 0 35px rgba(14, 165, 233, 0.25));
+}
+
+/* ============ CONTACT SECTION HOLOGRAM ============ */
+.contact-hologram {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 280px;
+    pointer-events: none;
+    z-index: 0;
+}
+.hologram-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+}
+.hologram-ring-1 {
+    inset: 0;
+    border-color: rgba(14, 165, 233, 0.13);
+    transform: perspective(300px) rotateX(74deg);
+    animation: holoRingRotate 10s linear infinite;
+}
+.hologram-ring-2 {
+    inset: 12%;
+    border-color: rgba(167, 139, 250, 0.1);
+    transform: perspective(300px) rotateX(74deg);
+    animation: holoRingRotate 17s linear infinite reverse;
+}
+.hologram-ring-3 {
+    inset: 24%;
+    border-color: rgba(249, 115, 22, 0.08);
+    transform: perspective(300px) rotateX(74deg);
+    animation: holoRingRotate 25s linear infinite;
+}
+@keyframes holoRingRotate {
+    from { transform: perspective(300px) rotateX(74deg) rotateZ(0deg);   }
+    to   { transform: perspective(300px) rotateX(74deg) rotateZ(360deg); }
+}
+.hologram-scanline {
+    position: absolute; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.4), transparent);
+    animation: scanSweep 3.5s ease-in-out infinite;
+    filter: blur(1px);
+}
+@keyframes scanSweep {
+    0%   { top: 0%;   opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* ============ RESPONSIVE SAFEGUARDS ============ */
+@media (max-width: 768px) {
+    .geo-cube         { display: none; }
+    .perspective-grid { display: none; }
+    .contact-hologram { display: none; }
+    #heroParallax     { transition: none !important; transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .geo-cube, .perspective-grid,
+    .contact-hologram, .cursor-trail { display: none; }
+    #heroParallax   { transition: none !important; }
+    .preloader-cube { animation: none !important; }
+}

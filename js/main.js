@@ -3,6 +3,10 @@
    JavaScript: 3D Animations · Particles · GSAP
    ===================================================== */
 
+// ============ SCROLL RESTORE FIX ============
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // ============ GSAP REGISTRATION ============
 gsap.registerPlugin(ScrollTrigger);
 
@@ -443,3 +447,101 @@ function downloadResume(event) {
     a.click();
     document.body.removeChild(a);
 }
+
+/* =====================================================
+   3D ENHANCEMENT LAYER — World-Class 3D Interactions
+   ===================================================== */
+
+// ============ HERO 3D MOUSE PARALLAX ============
+const heroParallaxEl = document.getElementById('heroParallax');
+const heroSect       = document.getElementById('home');
+let hpTX = 0, hpTY = 0, hpCX = 0, hpCY = 0;
+let heroReady = false;
+
+// Wait for entry animations to finish before enabling parallax
+setTimeout(() => { heroReady = true; }, 3300);
+
+if (heroParallaxEl && heroSect) {
+    heroSect.addEventListener('mousemove', e => {
+        const rect = heroSect.getBoundingClientRect();
+        hpTX = ((e.clientY - rect.top  - rect.height / 2) / (rect.height / 2)) * -12;
+        hpTY = ((e.clientX - rect.left - rect.width  / 2) / (rect.width  / 2)) *  12;
+    });
+    heroSect.addEventListener('mouseleave', () => { hpTX = 0; hpTY = 0; });
+
+    (function heroParallaxLoop() {
+        if (heroReady) {
+            hpCX += (hpTX - hpCX) * 0.065;
+            hpCY += (hpTY - hpCY) * 0.065;
+            if (Math.abs(hpCX) > 0.005 || Math.abs(hpCY) > 0.005) {
+                heroParallaxEl.style.transform =
+                    `perspective(1000px) rotateX(${hpCX.toFixed(3)}deg) rotateY(${hpCY.toFixed(3)}deg)`;
+            }
+        }
+        requestAnimationFrame(heroParallaxLoop);
+    })();
+}
+
+// ============ HERO SCROLL PARALLAX ============
+gsap.to('.hero-name', {
+    scrollTrigger: {
+        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 1.2
+    },
+    y: -80, ease: 'none'
+});
+gsap.to('.hero-description', {
+    scrollTrigger: {
+        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2
+    },
+    y: -50, ease: 'none'
+});
+gsap.to('.hero-visual', {
+    scrollTrigger: {
+        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2.8
+    },
+    y: -25, ease: 'none'
+});
+
+// ============ ARSENAL CARDS — 3D TILT (GSAP) ============
+document.querySelectorAll('.arsenal-cat').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const r  = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -8;
+        const ry = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  8;
+        gsap.to(card, {
+            rotateX: rx, rotateY: ry, y: -8,
+            transformPerspective: 700,
+            duration: 0.22, ease: 'power2.out', overwrite: 'auto'
+        });
+    });
+    card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+            rotateX: 0, rotateY: 0, y: 0,
+            duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: 'auto'
+        });
+    });
+});
+
+// ============ CURSOR TRAIL PARTICLES ============
+let trailTS = 0;
+const TRAIL_MS  = 38;
+const TRAIL_CLR = [
+    'rgba(14,165,233,0.75)',
+    'rgba(167,139,250,0.7)',
+    'rgba(249,115,22,0.55)'
+];
+document.addEventListener('mousemove', e => {
+    const now = Date.now();
+    if (now - trailTS < TRAIL_MS) return;
+    trailTS = now;
+    const p     = document.createElement('div');
+    p.className = 'cursor-trail';
+    const size  = Math.random() * 5 + 2;
+    const color = TRAIL_CLR[Math.floor(Math.random() * TRAIL_CLR.length)];
+    const dur   = Math.random() * 300 + 400;
+    p.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;` +
+                      `background:${color};box-shadow:0 0 ${size * 2}px ${color};` +
+                      `animation-duration:${dur}ms;`;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), dur);
+});

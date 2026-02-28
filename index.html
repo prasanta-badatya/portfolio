@@ -86,6 +86,16 @@
 
     <!-- Preloader -->
     <div id="preloader" class="preloader" aria-hidden="true">
+        <div class="preloader-cube-wrap">
+            <div class="preloader-cube">
+                <div class="cube-face cube-front"></div>
+                <div class="cube-face cube-back"></div>
+                <div class="cube-face cube-left"></div>
+                <div class="cube-face cube-right"></div>
+                <div class="cube-face cube-top"></div>
+                <div class="cube-face cube-bottom"></div>
+            </div>
+        </div>
         <div class="preloader-logo">PB</div>
         <div class="preloader-bar-wrap">
             <div class="preloader-bar"></div>
@@ -183,7 +193,33 @@
 
                     <!-- Right: Visual -->
                     <div class="hero-visual" aria-hidden="true">
-                        <div class="hero-image-wrapper">
+                        <div class="hero-image-wrapper" id="heroParallax">
+                            <!-- 3D CSS Wireframe Cubes -->
+                            <div class="geo-cube" aria-hidden="true">
+                                <div class="cube-face cube-front"></div>
+                                <div class="cube-face cube-back"></div>
+                                <div class="cube-face cube-left"></div>
+                                <div class="cube-face cube-right"></div>
+                                <div class="cube-face cube-top"></div>
+                                <div class="cube-face cube-bottom"></div>
+                            </div>
+                            <div class="geo-cube geo-cube-2" aria-hidden="true">
+                                <div class="cube-face cube-front"></div>
+                                <div class="cube-face cube-back"></div>
+                                <div class="cube-face cube-left"></div>
+                                <div class="cube-face cube-right"></div>
+                                <div class="cube-face cube-top"></div>
+                                <div class="cube-face cube-bottom"></div>
+                            </div>
+                            <div class="geo-cube geo-cube-3" aria-hidden="true">
+                                <div class="cube-face cube-front"></div>
+                                <div class="cube-face cube-back"></div>
+                                <div class="cube-face cube-left"></div>
+                                <div class="cube-face cube-right"></div>
+                                <div class="cube-face cube-top"></div>
+                                <div class="cube-face cube-bottom"></div>
+                            </div>
+
                             <div class="image-ring ring-1"></div>
                             <div class="image-ring ring-2"></div>
                             <div class="image-ring ring-3"></div>
@@ -219,6 +255,7 @@
 
         <!-- ===== ABOUT ===== -->
         <section id="about" class="section about-section" aria-labelledby="about-heading">
+            <div class="perspective-grid" aria-hidden="true"></div>
             <div class="container">
 
                 <div class="section-header">
@@ -443,6 +480,7 @@
 
         <!-- ===== EXPERIENCE ===== -->
         <section id="experience" class="section experience-section" aria-labelledby="experience-heading">
+            <div class="perspective-grid perspective-grid--purple" aria-hidden="true"></div>
             <div class="container">
 
                 <div class="section-header">
@@ -520,6 +558,12 @@
         <!-- ===== CONTACT ===== -->
         <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
             <div class="contact-bg-glow" aria-hidden="true"></div>
+            <div class="contact-hologram" aria-hidden="true">
+                <div class="hologram-ring hologram-ring-1"></div>
+                <div class="hologram-ring hologram-ring-2"></div>
+                <div class="hologram-ring hologram-ring-3"></div>
+                <div class="hologram-scanline"></div>
+            </div>
             <div class="container">
                 <div class="section-header">
                     <div class="section-label">04 / Contact</div>
