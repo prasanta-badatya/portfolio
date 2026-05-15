@@ -179,6 +179,10 @@
                                 <i class="fas fa-code"></i> View Work
                                 <div class="btn-shine"></div>
                             </a>
+                            <button class="cta-button resume-btn" onclick="openResumeModal()" aria-label="Preview and download resume">
+                                <i class="fas fa-file-pdf"></i> Resume
+                                <div class="btn-shine"></div>
+                            </button>
                         </div>
 
                         <div class="hero-links">
@@ -669,6 +673,44 @@
         ]
     }
     </script>
+
+    <!-- Resume Preview Modal -->
+    <div id="resume-modal" class="resume-modal" aria-hidden="true" role="dialog" aria-label="Resume Preview">
+        <div class="resume-modal-backdrop" aria-hidden="true"></div>
+        <div class="resume-modal-container" role="document">
+
+            <div class="resume-modal-header">
+                <div class="resume-modal-title">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    Prasanta Badatya &mdash; Resume
+                </div>
+                <div class="resume-modal-actions">
+                    <button class="resume-modal-download" onclick="downloadResumeFile()" aria-label="Download resume">
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </button>
+                    <button class="resume-modal-close" onclick="closeResumeModal()" aria-label="Close preview">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="resume-modal-body">
+                <iframe
+                    id="resume-frame"
+                    src=""
+                    data-src="assets/resume.pdf"
+                    title="Prasanta Badatya Resume"
+                    class="resume-preview-frame"
+                    aria-label="Resume PDF preview">
+                    <p>Your browser does not support PDF preview.
+                        <button onclick="downloadResumeFile()">Click here to download the resume.</button>
+                    </p>
+                </iframe>
+            </div>
+
+        </div>
+    </div>
 
     <!-- Main Script -->
     <script src="js/main.js"></script>

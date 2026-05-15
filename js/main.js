@@ -512,6 +512,10 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // ============ RESUME DOWNLOAD ============
 function downloadResume(event) {
     event.preventDefault();
+    downloadResumeFile();
+}
+
+function downloadResumeFile() {
     const a = document.createElement('a');
     a.href     = 'assets/resume.pdf';
     a.download = 'Prasanta_Badatya_Resume.pdf';
@@ -519,6 +523,51 @@ function downloadResume(event) {
     a.click();
     document.body.removeChild(a);
 }
+
+// ============ RESUME PREVIEW MODAL ============
+(function initResumeModal() {
+    const modal    = document.getElementById('resume-modal');
+    const frame    = document.getElementById('resume-frame');
+    const backdrop = modal.querySelector('.resume-modal-backdrop');
+    let   loaded   = false;
+
+    function openResumeModal() {
+        // Lazy-load the PDF on first open so it doesn't block page load
+        if (!loaded) {
+            frame.src = frame.dataset.src;
+            loaded = true;
+        }
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Cursor hover ring update
+        document.body.classList.remove('cursor-hover');
+    }
+
+    function closeResumeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    // Expose globally so onclick attributes can call them
+    window.openResumeModal  = openResumeModal;
+    window.closeResumeModal = closeResumeModal;
+
+    // Close on backdrop click
+    backdrop.addEventListener('click', closeResumeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeResumeModal();
+    });
+
+    // Add cursor-hover to modal interactive elements
+    modal.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+})();
 
 /* =====================================================
    3D ENHANCEMENT LAYER — World-Class 3D Interactions

@@ -1311,3 +1311,187 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     color: rgba(255, 255, 255, 0.45);
     opacity: 1;
 }
+
+/* ============ HERO RESUME BUTTON ============ */
+.cta-button.resume-btn {
+    background: transparent;
+    color: var(--purple);
+    border-color: rgba(167, 139, 250, 0.35);
+}
+.cta-button.resume-btn:hover {
+    border-color: var(--purple);
+    background: rgba(167, 139, 250, 0.08);
+    box-shadow: 0 8px 28px rgba(167, 139, 250, 0.2);
+}
+
+/* ============ RESUME PREVIEW MODAL ============ */
+.resume-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
+}
+.resume-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Backdrop */
+.resume-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 8, 23, 0.88);
+    backdrop-filter: blur(18px) saturate(1.4);
+    cursor: pointer;
+}
+
+/* Container */
+.resume-modal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 880px;
+    height: 88vh;
+    max-height: 940px;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-cyan);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(14, 165, 233, 0.06),
+        0 40px 100px rgba(0, 0, 0, 0.75),
+        0 0 80px rgba(14, 165, 233, 0.05);
+    transform: scale(0.93) translateY(24px);
+    transition: transform 0.4s var(--spring);
+}
+.resume-modal.active .resume-modal-container {
+    transform: scale(1) translateY(0);
+}
+/* Top gradient accent */
+.resume-modal-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--orange));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Header */
+.resume-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: rgba(11, 17, 32, 0.6);
+    backdrop-filter: blur(8px);
+}
+.resume-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-h);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-1);
+    letter-spacing: 0.2px;
+}
+.resume-modal-title i {
+    color: var(--cyan);
+    font-size: 15px;
+}
+.resume-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Download button */
+.resume-modal-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-cyan);
+    background: rgba(14, 165, 233, 0.07);
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-b);
+    cursor: pointer;
+    transition: all 0.25s var(--ease);
+    letter-spacing: 0.2px;
+}
+.resume-modal-download:hover {
+    background: rgba(14, 165, 233, 0.16);
+    border-color: var(--cyan);
+    color: var(--cyan-light);
+    box-shadow: 0 0 18px rgba(14, 165, 233, 0.28);
+    transform: translateY(-1px);
+}
+.resume-modal-download i { font-size: 11px; }
+
+/* Close button */
+.resume-modal-close {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-3);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.25s var(--ease);
+}
+.resume-modal-close:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-1);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* PDF frame */
+.resume-modal-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    background: #525659;
+}
+.resume-preview-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    cursor: auto;
+}
+
+/* Mobile: sheet slides up from bottom */
+@media (max-width: 768px) {
+    .resume-modal { padding: 0; align-items: flex-end; }
+    .resume-modal-container {
+        max-width: 100%;
+        height: 90vh;
+        border-radius: 16px 16px 0 0;
+        border-bottom: none;
+        transform: translateY(100%);
+    }
+    .resume-modal.active .resume-modal-container {
+        transform: translateY(0);
+    }
+    .resume-modal-download span { display: none; }
+    .resume-modal-download { padding: 7px 10px; }
+}
