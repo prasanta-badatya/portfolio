@@ -10,16 +10,71 @@ window.scrollTo(0, 0);
 // ============ GSAP REGISTRATION ============
 gsap.registerPlugin(ScrollTrigger);
 
+// ============ SCROLL PROGRESS BAR ============
+const progressBar = document.createElement('div');
+progressBar.id = 'scroll-progress';
+document.body.prepend(progressBar);
+window.addEventListener('scroll', () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll > 0) progressBar.style.width = ((window.scrollY / maxScroll) * 100) + '%';
+}, { passive: true });
+
+// ============ TEXT SCRAMBLE ENGINE ============
+class TextScramble {
+    constructor(el) {
+        this.el    = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#01█▓▒░│┤╢╖╕╣║╗╝┐└┴┬├─┼';
+        this.update = this.update.bind(this);
+    }
+    setText(newText) {
+        const len  = newText.length;
+        const promise = new Promise(resolve => { this.resolve = resolve; });
+        this.queue = [];
+        for (let i = 0; i < len; i++) {
+            const start = Math.floor(Math.random() * 10);
+            const end   = start + Math.floor(Math.random() * 18) + 5;
+            this.queue.push({ to: newText[i], start, end, char: '' });
+        }
+        cancelAnimationFrame(this.frameReq);
+        this.frame = 0;
+        this.update();
+        return promise;
+    }
+    update() {
+        let output = '', complete = 0;
+        for (let i = 0; i < this.queue.length; i++) {
+            const { to, start, end } = this.queue[i];
+            let   { char }           = this.queue[i];
+            if (this.frame >= end) {
+                complete++;
+                output += to;
+            } else if (this.frame >= start) {
+                if (!char || Math.random() < 0.28) {
+                    char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                    this.queue[i].char = char;
+                }
+                output += `<span class="scramble-char">${char}</span>`;
+            } else {
+                output += '';
+            }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) {
+            this.resolve();
+        } else {
+            this.frameReq = requestAnimationFrame(this.update);
+            this.frame++;
+        }
+    }
+}
+
 // ============ PRELOADER + SCROLLTRIGGER REFRESH ============
 window.addEventListener('load', () => {
-    // Dismiss preloader
     const preloader = document.getElementById('preloader');
     setTimeout(() => {
         preloader.classList.add('fade-out');
         setTimeout(() => preloader.remove(), 900);
     }, 1800);
-
-    // Recalculate all ScrollTrigger positions after fonts & images settle
     setTimeout(() => ScrollTrigger.refresh(), 200);
 });
 
@@ -61,7 +116,8 @@ document.addEventListener('mouseenter', () => {
 const canvas = document.getElementById('heroCanvas');
 const ctx    = canvas.getContext('2d');
 let particles = [];
-let mouse = { x: null, y: null };
+let mouse     = { x: null, y: null };
+let mouseDown = false;
 
 const resize = () => {
     canvas.width  = window.innerWidth;
@@ -70,23 +126,22 @@ const resize = () => {
 resize();
 window.addEventListener('resize', () => { resize(); buildParticles(); });
 
-document.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-document.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+document.addEventListener('mouseleave',  () => { mouse.x = null; mouse.y = null; });
+document.addEventListener('mousedown',   () => { mouseDown = true;  });
+document.addEventListener('mouseup',     () => { mouseDown = false; });
 
 class Particle {
     constructor() { this.init(); }
     init() {
-        this.x    = Math.random() * canvas.width;
-        this.y    = Math.random() * canvas.height;
-        this.size = Math.random() * 1.8 + 0.4;
-        this.vx   = (Math.random() - 0.5) * 0.45;
-        this.vy   = (Math.random() - 0.5) * 0.45;
+        this.x         = Math.random() * canvas.width;
+        this.y         = Math.random() * canvas.height;
+        this.size      = Math.random() * 1.8 + 0.4;
+        this.vx        = (Math.random() - 0.5) * 0.45;
+        this.vy        = (Math.random() - 0.5) * 0.45;
         this.baseAlpha = Math.random() * 0.55 + 0.1;
         this.alpha     = this.baseAlpha;
-        this.hue  = Math.random() > 0.65 ? 270 : 200;
+        this.hue       = Math.random() > 0.65 ? 270 : 200;
     }
     update() {
         this.x += this.vx;
@@ -95,15 +150,29 @@ class Particle {
             const dx   = this.x - mouse.x;
             const dy   = this.y - mouse.y;
             const dist = Math.hypot(dx, dy);
-            const R    = 130;
-            if (dist < R) {
-                const force = (R - dist) / R;
-                this.x += (dx / dist) * force * 3.5;
-                this.y += (dy / dist) * force * 3.5;
-                this.alpha = Math.min(1, this.baseAlpha + force * 0.6);
+            if (mouseDown) {
+                // Click: attract particles toward cursor
+                const R = 220;
+                if (dist < R && dist > 1) {
+                    const force = (R - dist) / R;
+                    this.x    -= (dx / dist) * force * 5.5;
+                    this.y    -= (dy / dist) * force * 5.5;
+                    this.alpha = Math.min(1, this.baseAlpha + force * 0.8);
+                }
             } else {
-                this.alpha = this.baseAlpha;
+                // Hover: repel particles from cursor
+                const R = 130;
+                if (dist < R) {
+                    const force = (R - dist) / R;
+                    this.x    += (dx / dist) * force * 3.5;
+                    this.y    += (dy / dist) * force * 3.5;
+                    this.alpha = Math.min(1, this.baseAlpha + force * 0.6);
+                } else {
+                    this.alpha = this.baseAlpha;
+                }
             }
+        } else {
+            this.alpha = this.baseAlpha;
         }
         if (this.x < 0)             this.x = canvas.width;
         if (this.x > canvas.width)  this.x = 0;
@@ -215,17 +284,20 @@ document.querySelectorAll('.nav-item').forEach(item => {
 });
 
 // ============ GSAP SCROLL ANIMATIONS ============
-// KEY RULE: every gsap.from() that animates opacity MUST have
-// immediateRender: false — otherwise GSAP sets opacity:0 on page
-// load and elements stay invisible if their trigger never fires.
+// KEY RULE: scroll-triggered from() tweens must use immediateRender: false
+// so elements stay visible on load if their trigger never fires.
 
-// --- Section headers ---
+// --- Section headers — clip-path wipe reveal (unique per header) ---
 document.querySelectorAll('.section-header').forEach(hdr => {
-    gsap.from(Array.from(hdr.children), {
-        immediateRender: false,
-        scrollTrigger: { trigger: hdr, start: 'top 88%', once: true },
-        opacity: 0, y: 36, duration: .8, stagger: .13, ease: 'power3.out'
+    const label    = hdr.querySelector('.section-label');
+    const title    = hdr.querySelector('.section-title');
+    const subtitle = hdr.querySelector('.section-subtitle');
+    const tl = gsap.timeline({
+        scrollTrigger: { trigger: hdr, start: 'top 86%', once: true }
     });
+    if (label)    tl.from(label,    { immediateRender: false, opacity: 0, y: 18, duration: 0.55, ease: 'power2.out' });
+    if (title)    tl.from(title,    { immediateRender: false, clipPath: 'inset(0 0 100% 0)', y: 14, opacity: 0, duration: 0.85, ease: 'power3.out' }, '-=0.1');
+    if (subtitle) tl.from(subtitle, { immediateRender: false, opacity: 0, y: 12, duration: 0.65, ease: 'power2.out' }, '-=0.35');
 });
 
 // --- About ---
@@ -244,10 +316,13 @@ gsap.from('.about-stat-row', {
     scrollTrigger: { trigger: '.about-stats-panel', start: 'top 88%', once: true },
     opacity: 0, x: 28, duration: .55, stagger: .13, ease: 'power2.out'
 });
+// Arsenal — 3D tilt entrance (rotateX drop-in)
 gsap.from('.arsenal-cat', {
     immediateRender: false,
     scrollTrigger: { trigger: '.tech-arsenal', start: 'top 88%', once: true },
-    opacity: 0, y: 40, duration: .6, stagger: .1, ease: 'power3.out'
+    opacity: 0, y: 50, rotateX: 20,
+    transformPerspective: 600,
+    duration: .7, stagger: .1, ease: 'power3.out'
 });
 gsap.from('.a-tag', {
     immediateRender: false,
@@ -255,15 +330,16 @@ gsap.from('.a-tag', {
     opacity: 0, y: 10, duration: .35, stagger: .04, ease: 'power2.out'
 });
 
-// --- Portfolio ---
+// --- Portfolio — 3D rotateY card entrance ---
 gsap.from('.portfolio-item', {
     immediateRender: false,
     scrollTrigger: { trigger: '.portfolio-grid', start: 'top 80%', once: true },
-    opacity: 0, y: 60, duration: .7, stagger: .14, ease: 'power3.out'
+    opacity: 0, y: 60, rotateY: 10,
+    transformPerspective: 800,
+    duration: .85, stagger: .18, ease: 'power3.out'
 });
 
 // --- Experience ---
-// Timeline line draws progressively as you scroll (scrub — silky smooth)
 gsap.fromTo('.timeline-line',
     { clipPath: 'inset(0 0 100% 0)' },
     {
@@ -278,53 +354,39 @@ gsap.fromTo('.timeline-line',
     }
 );
 
-// Single sequenced GSAP timeline for ALL experience content.
-// IMPORTANT: immediateRender:false on EVERY tween — including the
-// first one — so nothing gets pre-hidden on page load.
 gsap.timeline({
-    scrollTrigger: {
-        trigger: '.experience-section',
-        start: 'top 60%',
-        once: true
-    }
+    scrollTrigger: { trigger: '.experience-section', start: 'top 60%', once: true }
 })
-.from('.timeline-dot', {
-    immediateRender: false,
-    scale: 0, opacity: 0, duration: .45, ease: 'back.out(2.5)'
-})
-.from('.timeline-date', {
-    immediateRender: false,
-    opacity: 0, y: 20, duration: .45, ease: 'power2.out'
-}, '-=0.1')
+.from('.timeline-dot',  { immediateRender: false, scale: 0, opacity: 0, duration: .45, ease: 'back.out(2.5)' })
+.from('.timeline-date', { immediateRender: false, opacity: 0, y: 20, duration: .45, ease: 'power2.out' }, '-=0.1')
 .from('.timeline-title', {
     immediateRender: false,
-    opacity: 0, y: 20, duration: .45, ease: 'power2.out'
-}, '-=0.28')
-.from('.timeline-company', {
-    immediateRender: false,
-    opacity: 0, y: 20, duration: .45, ease: 'power2.out'
-}, '-=0.28')
-.from('.timeline-description', {
-    immediateRender: false,
-    opacity: 0, y: 20, duration: .45, ease: 'power2.out'
-}, '-=0.22')
+    clipPath: 'inset(0 100% 0 0)', opacity: 0,
+    duration: .65, ease: 'power3.out'
+}, '-=0.2')
+.from('.timeline-company',     { immediateRender: false, opacity: 0, y: 20, duration: .45, ease: 'power2.out' }, '-=0.28')
+.from('.timeline-description', { immediateRender: false, opacity: 0, y: 20, duration: .45, ease: 'power2.out' }, '-=0.22')
 .from('.achievement-item', {
     immediateRender: false,
     opacity: 0, y: 26, scale: 0.94,
     duration: .5, stagger: .12, ease: 'power2.out'
 }, '-=0.1')
-.from('#experience .tech-tag', {
-    immediateRender: false,
-    opacity: 0, y: 10, duration: .32, stagger: .05, ease: 'power2.out'
-}, '-=0.1');
+.from('#experience .tech-tag', { immediateRender: false, opacity: 0, y: 10, duration: .32, stagger: .05, ease: 'power2.out' }, '-=0.1');
 
-// --- Contact ---
-gsap.from('.contact-cta-row .cta-button', {
+// --- Contact — hologram rings scale in, then buttons bounce ---
+gsap.timeline({
+    scrollTrigger: { trigger: '.contact-section', start: 'top 68%', once: true }
+})
+.from('.hologram-ring', {
     immediateRender: false,
-    scrollTrigger: { trigger: '.contact-section', start: 'top 65%', once: true },
-    opacity: 0, y: 24, duration: .6, stagger: .12, ease: 'power3.out'
-});
-
+    scale: 0, opacity: 0,
+    duration: 1.0, stagger: 0.18, ease: 'power3.out'
+})
+.from('.contact-cta-row .cta-button', {
+    immediateRender: false,
+    opacity: 0, y: 32, scale: 0.88,
+    duration: 0.65, stagger: .18, ease: 'back.out(1.8)'
+}, '-=0.5');
 
 // ============ COUNTER ANIMATION ============
 function animateCount(el, end, suffix) {
@@ -404,29 +466,39 @@ window.addEventListener('scroll', syncNav, { passive: true });
 syncNav();
 
 // ============ HERO ENTRY ANIMATIONS ============
-// Runs after preloader completes
+// Fires after preloader finishes (~1.95s)
+// - Text scramble on .greeting + .n1 (Matrix hacker effect)
+// - Clip-path wipe on .n2 (gradient name sweeps in from left)
+// - 3D rotateY entrance on .hero-image-wrapper
 setTimeout(() => {
-    gsap.from('.hero-badge',        { opacity: 0, y: 20, duration: .7, delay: .0, ease: 'power2.out' });
-    gsap.from('.greeting',          { opacity: 0, y: 20, duration: .7, delay: .1, ease: 'power2.out' });
-    gsap.from('.hero-name .n1',     { opacity: 0, y: 60, duration: .9, delay: .2, ease: 'power3.out' });
-    gsap.from('.hero-name .n2',     { opacity: 0, y: 60, duration: .9, delay: .4, ease: 'power3.out' });
-    gsap.from('.hero-title',        { opacity: 0, y: 20, duration: .7, delay: .6, ease: 'power2.out' });
-    gsap.from('.hero-description',  { opacity: 0, y: 20, duration: .7, delay: .7, ease: 'power2.out' });
-    gsap.from('.hero-stats',        { opacity: 0, y: 20, duration: .7, delay: .8, ease: 'power2.out' });
-    gsap.from('.hero-actions',      { opacity: 0, y: 20, duration: .7, delay: .9, ease: 'power2.out' });
-    gsap.from('.hero-links',        { opacity: 0, y: 20, duration: .7, delay: 1.0, ease: 'power2.out' });
-    gsap.from('.hero-image-wrapper',{ opacity: 0, x: 60, duration: 1.1, delay: .3, ease: 'power3.out' });
+    const greetingEl = document.querySelector('.greeting');
+    const n1El       = document.querySelector('.hero-name .n1');
+
+    // Clear scramble targets (hidden behind preloader, safe to clear)
+    if (greetingEl) greetingEl.textContent = '';
+    if (n1El)       n1El.textContent       = '';
+
+    // ---- GSAP-controlled elements ----
+    gsap.from('.hero-badge',         { opacity: 0, y: -22,                                          duration: 0.60, delay: 0.00, ease: 'power3.out' });
+    gsap.from('.hero-image-wrapper', { opacity: 0, x: 80, rotateY: 16, transformPerspective: 1200,  duration: 1.15, delay: 0.15, ease: 'power3.out' });
+    gsap.from('.hero-name .n2',      { opacity: 0, clipPath: 'inset(0 100% 0 0)',                    duration: 1.00, delay: 0.62, ease: 'power3.out' });
+    gsap.from('.hero-title',         { opacity: 0, y: 22,                                           duration: 0.65, delay: 0.88, ease: 'power2.out' });
+    gsap.from('.hero-description',   { opacity: 0, y: 18,                                           duration: 0.65, delay: 1.05, ease: 'power2.out' });
+    gsap.from('.hero-stats',         { opacity: 0, y: 18,                                           duration: 0.60, delay: 1.20, ease: 'power2.out' });
+    gsap.from('.hero-actions',       { opacity: 0, y: 18,                                           duration: 0.60, delay: 1.35, ease: 'power2.out' });
+    gsap.from('.hero-links',         { opacity: 0, y: 18,                                           duration: 0.60, delay: 1.50, ease: 'power2.out' });
+
+    // ---- Text scramble elements (Matrix/hacker entrance) ----
+    if (greetingEl) setTimeout(() => new TextScramble(greetingEl).setText("// Hello, I'm"), 280);
+    if (n1El)       setTimeout(() => new TextScramble(n1El).setText('Prasanta'),           440);
+
 }, 1950);
 
 // ============ SCROLL TO TOP ============
 const scrollTopBtn = document.getElementById('scroll-top-btn');
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > window.innerHeight * 0.5) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
+    scrollTopBtn.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
 }, { passive: true });
 
 scrollTopBtn.addEventListener('click', () => {
@@ -484,21 +556,15 @@ if (heroParallaxEl && heroSect) {
 
 // ============ HERO SCROLL PARALLAX ============
 gsap.to('.hero-name', {
-    scrollTrigger: {
-        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 1.2
-    },
+    scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 1.2 },
     y: -80, ease: 'none'
 });
 gsap.to('.hero-description', {
-    scrollTrigger: {
-        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2
-    },
+    scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2 },
     y: -50, ease: 'none'
 });
 gsap.to('.hero-visual', {
-    scrollTrigger: {
-        trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2.8
-    },
+    scrollTrigger: { trigger: '#home', start: 'top top', end: 'bottom top', scrub: 2.8 },
     y: -25, ease: 'none'
 });
 
@@ -522,26 +588,3 @@ document.querySelectorAll('.arsenal-cat').forEach(card => {
     });
 });
 
-// ============ CURSOR TRAIL PARTICLES ============
-let trailTS = 0;
-const TRAIL_MS  = 38;
-const TRAIL_CLR = [
-    'rgba(14,165,233,0.75)',
-    'rgba(167,139,250,0.7)',
-    'rgba(249,115,22,0.55)'
-];
-document.addEventListener('mousemove', e => {
-    const now = Date.now();
-    if (now - trailTS < TRAIL_MS) return;
-    trailTS = now;
-    const p     = document.createElement('div');
-    p.className = 'cursor-trail';
-    const size  = Math.random() * 5 + 2;
-    const color = TRAIL_CLR[Math.floor(Math.random() * TRAIL_CLR.length)];
-    const dur   = Math.random() * 300 + 400;
-    p.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;width:${size}px;height:${size}px;` +
-                      `background:${color};box-shadow:0 0 ${size * 2}px ${color};` +
-                      `animation-duration:${dur}ms;`;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), dur);
-});

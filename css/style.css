@@ -464,7 +464,16 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 
 /* Angular badge uses red accent to match Angular brand */
 .tech-badge-4 i { color: #dd1b16; }
-@keyframes bFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+@keyframes bFloat {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0px rgba(14,165,233,0);
+    }
+    50% {
+        transform: translateY(-11px);
+        box-shadow: 0 18px 36px rgba(0,0,0,0.55), 0 0 20px rgba(14,165,233,0.3), 0 0 40px rgba(14,165,233,0.1);
+    }
+}
 
 /* Scroll Indicator */
 .scroll-indicator {
@@ -1171,20 +1180,6 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     to   { transform: rotateX(-30deg) rotateY(360deg); }
 }
 
-/* ============ CURSOR TRAIL PARTICLES ============ */
-.cursor-trail {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99985;
-    transform: translate(-50%, -50%);
-    animation: trailFade 0.65s ease-out forwards;
-    mix-blend-mode: screen;
-}
-@keyframes trailFade {
-    0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(1);   }
-    100% { opacity: 0;    transform: translate(-50%, -50%) scale(0.1); }
-}
 
 /* ============ HERO 3D PARALLAX ============ */
 #heroParallax {
@@ -1222,6 +1217,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     filter: drop-shadow(2px 3px 0 rgba(167, 139, 250, 0.25))
             drop-shadow(0 0 20px rgba(14, 165, 233, 0.12));
     transition: filter 0.4s ease;
+    will-change: clip-path;
 }
 .hero-name:hover .n2 {
     filter: drop-shadow(4px 5px 0 rgba(167, 139, 250, 0.4))
@@ -1287,7 +1283,31 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 }
 @media (prefers-reduced-motion: reduce) {
     .geo-cube, .perspective-grid,
-    .contact-hologram, .cursor-trail { display: none; }
+    .contact-hologram { display: none; }
     #heroParallax   { transition: none !important; }
     .preloader-cube { animation: none !important; }
+}
+
+/* ============ SCROLL PROGRESS BAR ============ */
+#scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--cyan), var(--purple), var(--orange));
+    z-index: 100000;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.6), 0 0 20px rgba(167, 139, 250, 0.3);
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
+
+/* ============ TEXT SCRAMBLE CHARS ============ */
+.scramble-char {
+    color: var(--cyan);
+    opacity: 0.55;
+    font-family: var(--font-m);
+}
+.hero-name .n1 .scramble-char {
+    color: rgba(255, 255, 255, 0.45);
+    opacity: 1;
 }
