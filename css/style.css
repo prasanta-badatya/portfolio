@@ -1,6 +1,6 @@
-/* =====================================================
-   PRASANTA BADATYA — WORLD-CLASS PORTFOLIO
-   Design: Cyberpunk Dark · 3D Animations · Premium UX
+﻿/* =====================================================
+   PRASANTA BADATYA â€” WORLD-CLASS PORTFOLIO
+   Design: Cyberpunk Dark Â· 3D Animations Â· Premium UX
    ===================================================== */
 
 /* ============ VARIABLES ============ */
@@ -798,7 +798,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     width: 1px;
     background: linear-gradient(to bottom, var(--cyan), rgba(14,165,233,0.08));
     will-change: clip-path;
-    /* initial clip-path set by GSAP fromTo — do not set here to avoid conflicts */
+    /* initial clip-path set by GSAP fromTo â€” do not set here to avoid conflicts */
 }
 .timeline-item { position: relative; padding-left: 88px; margin-bottom: 60px; }
 .timeline-dot {
@@ -1021,7 +1021,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 @media (max-width: 480px) {
     .hero-stats { flex-wrap: wrap; gap: 20px; justify-content: center; }
 }
-/* Touch devices — disable custom cursor */
+/* Touch devices â€” disable custom cursor */
 @media (hover: none) and (pointer: coarse) {
     body { cursor: auto; }
     .cursor-dot, .cursor-ring { display: none; }
@@ -1049,8 +1049,8 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 }
 
 /* =====================================================
-   3D ENHANCEMENT LAYER — World-Class 3D Effects
-   Cubes · Parallax · Holographic · Trail · Grid
+   3D ENHANCEMENT LAYER â€” World-Class 3D Effects
+   Cubes Â· Parallax Â· Holographic Â· Trail Â· Grid
    ===================================================== */
 
 /* ============ PERSPECTIVE GRID FLOORS ============ */
@@ -1086,7 +1086,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     animation: cubeRotate3D 16s linear infinite;
 }
 
-/* Cube 1 — Cyan, 72 × 72 */
+/* Cube 1 â€” Cyan, 72 Ã— 72 */
 .geo-cube:not(.geo-cube-2):not(.geo-cube-3) {
     width: 72px; height: 72px;
     top: 4%; right: -22%;
@@ -1105,7 +1105,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 .geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-top    { transform: rotateX(90deg)  translateZ(36px); }
 .geo-cube:not(.geo-cube-2):not(.geo-cube-3) .cube-bottom { transform: rotateX(-90deg) translateZ(36px); }
 
-/* Cube 2 — Purple, 52 × 52 */
+/* Cube 2 â€” Purple, 52 Ã— 52 */
 .geo-cube-2 {
     width: 52px; height: 52px;
     bottom: 10%; left: -22%;
@@ -1126,7 +1126,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
 .geo-cube-2 .cube-top    { transform: rotateX(90deg)  translateZ(26px); }
 .geo-cube-2 .cube-bottom { transform: rotateX(-90deg) translateZ(26px); }
 
-/* Cube 3 — Orange, 38 × 38 */
+/* Cube 3 â€” Orange, 38 Ã— 38 */
 .geo-cube-3 {
     width: 38px; height: 38px;
     top: -8%; left: 42%;
@@ -1187,10 +1187,10 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     will-change: transform;
 }
 
-/* ============ ARSENAL CARDS — 3D TILT ============ */
+/* ============ ARSENAL CARDS â€” 3D TILT ============ */
 .arsenal-cat { will-change: transform; }
 
-/* ============ ACHIEVEMENT ITEMS — 3D HOVER ============ */
+/* ============ ACHIEVEMENT ITEMS â€” 3D HOVER ============ */
 .achievement-item { transition: all .4s var(--ease) !important; }
 .achievement-item:hover {
     transform: perspective(400px) rotateY(-4deg) rotateX(2deg) translateX(6px) !important;
@@ -1199,7 +1199,7 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* ============ HERO NAME — 3D DEPTH TEXT ============ */
+/* ============ HERO NAME â€” 3D DEPTH TEXT ============ */
 .hero-name .n1 {
     text-shadow:
         1px 1px 0 rgba(14, 165, 233, 0.2),
@@ -1491,156 +1491,4 @@ body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: rgba(2
         transform: translateY(0);
     }
     .resume-modal-download { padding: 7px 10px; }
-}
-
-/* ============ SKILL UNIVERSE — 3D SECTION ============ */
-.skill-universe-section {
-    display: block;   /* .section is flex — absolute-only children would collapse .su-pin to width 0 */
-    padding: 0;
-    position: relative;
-    background: var(--bg-2);
-}
-.su-pin {
-    width: 100%;
-    height: 100vh;
-    min-height: 620px;
-    position: relative;
-    overflow: hidden;
-}
-#skillUniverseCanvas {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    display: block;
-}
-
-/* HTML overlay above the WebGL canvas */
-.su-overlay {
-    position: absolute; inset: 0;
-    z-index: 2;
-    pointer-events: none;
-}
-.su-header {
-    position: absolute;
-    top: 84px; left: 0; right: 0;
-    text-align: center;
-    margin-bottom: 0;
-}
-.su-hint {
-    margin-top: 14px;
-    font-family: var(--font-m);
-    font-size: 11.5px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-3);
-    animation: suHintPulse 2.2s ease-in-out infinite;
-    transition: opacity .5s var(--ease);
-}
-.su-hint i { color: var(--cyan); margin-right: 6px; }
-@keyframes suHintPulse {
-    0%, 100% { opacity: .45; }
-    50%      { opacity: 1; }
-}
-
-/* Act captions — faded in/out by JS as the camera flies */
-.su-act {
-    position: absolute;
-    left: 0; right: 0; bottom: 11%;
-    text-align: center;
-    opacity: 0;
-    will-change: opacity, transform;
-}
-.su-act h3 {
-    font-family: var(--font-h);
-    font-size: clamp(1.5rem, 3.2vw, 2.3rem);
-    font-weight: 700;
-    background: linear-gradient(120deg, var(--cyan), var(--purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.su-act p {
-    margin-top: 8px;
-    color: var(--text-2);
-    font-size: 14px;
-    font-family: var(--font-m);
-    letter-spacing: .4px;
-}
-
-/* Act 3 — converged stats in the center */
-.su-act-3 {
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.su-final-stats {
-    display: flex;
-    justify-content: center;
-    gap: clamp(28px, 6vw, 72px);
-    flex-wrap: wrap;
-}
-.su-stat { text-align: center; }
-.su-num {
-    display: block;
-    font-family: var(--font-h);
-    font-size: clamp(2.4rem, 5.5vw, 4rem);
-    font-weight: 800;
-    line-height: 1.1;
-    background: linear-gradient(120deg, var(--cyan), var(--purple), var(--orange));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 24px rgba(14, 165, 233, 0.35));
-}
-.su-stat-label {
-    display: block;
-    margin-top: 8px;
-    font-family: var(--font-m);
-    font-size: 11px;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: var(--text-3);
-}
-
-/* Static fallback — no WebGL / reduced motion */
-.su-pin.su-static {
-    height: auto;
-    min-height: 0;
-    padding: 40px 40px 100px;
-    overflow: visible;
-}
-.su-pin.su-static #skillUniverseCanvas,
-.su-pin.su-static .su-act,
-.su-pin.su-static .su-hint { display: none; }
-.su-pin.su-static .su-header { position: static; margin-bottom: 54px; }
-.su-fallback-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-.su-fb-cat {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-}
-.su-fb-cat h4 {
-    font-family: var(--font-h);
-    font-size: 14px;
-    color: var(--text-1);
-    margin-bottom: 10px;
-}
-.su-fb-cat h4 i { color: var(--cyan); margin-right: 8px; }
-.su-fb-cat p {
-    color: var(--text-2);
-    font-size: 13px;
-    font-family: var(--font-m);
-    line-height: 1.8;
-}
-
-@media (max-width: 768px) {
-    .su-header { top: 68px; padding: 0 20px; }
-    .su-act { bottom: 14%; padding: 0 20px; }
-    .su-pin.su-static { padding: 32px 20px 80px; }
 }
